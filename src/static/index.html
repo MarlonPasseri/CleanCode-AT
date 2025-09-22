@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Logística - Refatorado</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-truck"></i> Sistema de Logística</h1>
+                <p>Módulo refatorado com Clean Code e Engenharia de Software</p>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tabs">
+                <button class="tab-button active" data-tab="calcular">
+                    <i class="fas fa-calculator"></i> Calcular Frete
+                </button>
+                <button class="tab-button" data-tab="etiqueta">
+                    <i class="fas fa-tag"></i> Gerar Etiqueta
+                </button>
+                <button class="tab-button" data-tab="promocoes">
+                    <i class="fas fa-percentage"></i> Aplicar Promoções
+                </button>
+            </div>
+
+            <!-- Tab: Calcular Frete -->
+            <div class="tab-content active" id="calcular">
+                <div class="card">
+                    <h2><i class="fas fa-calculator"></i> Calcular Frete</h2>
+                    <form id="calcular-form">
+                        <div class="form-group">
+                            <label for="calc-destinatario">Destinatário:</label>
+                            <input type="text" id="calc-destinatario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc-endereco">Endereço:</label>
+                            <input type="text" id="calc-endereco" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc-peso">Peso (kg):</label>
+                            <input type="number" id="calc-peso" step="0.1" min="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="calc-tipo-frete">Tipo de Frete:</label>
+                            <select id="calc-tipo-frete" required>
+                                <option value="">Selecione...</option>
+                                <option value="EXP">Expresso (peso × 1.5 + R$10)</option>
+                                <option value="PAD">Padrão (peso × 1.2)</option>
+                                <option value="ECO">Econômico (peso × 1.1 - R$5)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-calculator"></i> Calcular Frete
+                        </button>
+                    </form>
+                    <div id="calc-resultado" class="resultado"></div>
+                </div>
+            </div>
+
+            <!-- Tab: Gerar Etiqueta -->
+            <div class="tab-content" id="etiqueta">
+                <div class="card">
+                    <h2><i class="fas fa-tag"></i> Gerar Etiqueta</h2>
+                    <form id="etiqueta-form">
+                        <div class="form-group">
+                            <label for="etiq-destinatario">Destinatário:</label>
+                            <input type="text" id="etiq-destinatario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="etiq-endereco">Endereço:</label>
+                            <input type="text" id="etiq-endereco" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="etiq-peso">Peso (kg):</label>
+                            <input type="number" id="etiq-peso" step="0.1" min="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="etiq-tipo-frete">Tipo de Frete:</label>
+                            <select id="etiq-tipo-frete" required>
+                                <option value="">Selecione...</option>
+                                <option value="EXP">Expresso</option>
+                                <option value="PAD">Padrão</option>
+                                <option value="ECO">Econômico</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-tag"></i> Gerar Etiqueta
+                        </button>
+                    </form>
+                    <div id="etiq-resultado" class="resultado"></div>
+                </div>
+            </div>
+
+            <!-- Tab: Aplicar Promoções -->
+            <div class="tab-content" id="promocoes">
+                <div class="card">
+                    <h2><i class="fas fa-percentage"></i> Aplicar Promoções</h2>
+                    <div class="promocao-info">
+                        <p><i class="fas fa-info-circle"></i> <strong>Promoção Ativa:</strong> Redução de 1kg para entregas acima de 10kg</p>
+                    </div>
+                    <form id="promocoes-form">
+                        <div class="form-group">
+                            <label for="promo-destinatario">Destinatário:</label>
+                            <input type="text" id="promo-destinatario" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="promo-endereco">Endereço:</label>
+                            <input type="text" id="promo-endereco" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="promo-peso">Peso (kg):</label>
+                            <input type="number" id="promo-peso" step="0.1" min="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="promo-tipo-frete">Tipo de Frete:</label>
+                            <select id="promo-tipo-frete" required>
+                                <option value="">Selecione...</option>
+                                <option value="EXP">Expresso</option>
+                                <option value="PAD">Padrão</option>
+                                <option value="ECO">Econômico</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-percentage"></i> Verificar Promoções
+                        </button>
+                    </form>
+                    <div id="promo-resultado" class="resultado"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Sistema de Logística Refatorado - Demonstração de Clean Code</p>
+        </footer>
+    </div>
+
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Processando...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
